@@ -13,7 +13,7 @@ def create_test_prompt(topic, num_questions, num_possible_answers):
 if __name__ == '__main__':
     openai.api_key = os.getenv('OPENAI_API_KEY')
 
-    response = openai.Completion.create(model='text-davinci-003', prompt=cerate_test_prompt('AWS Solution Architecture', 4, 4),
+    response = openai.Completion.create(model='text-davinci-003', prompt=create_test_prompt('Open AI', 4, 4),
                                         max_tokens=256, temperature=0.7)
 
     print(response['choices'][0]['text'])
