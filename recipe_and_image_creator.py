@@ -28,6 +28,11 @@ def save_image(image_url, file_name):
     return image_res.status_code
 
 
+def dalle2_prompt(recipe_title):
+    prompt = f"{recipe_title}, professional food photography, 15mm, studio lighting"
+    return prompt
+
+
 if __name__ == '__main__':
     openai.api_key = os.getenv('OPENAI_API_KEY')
 
@@ -40,7 +45,7 @@ if __name__ == '__main__':
     title = extract_title(result_text)
     print(result_text)
 
-    image_respose = openai.Image.create(prompt=title,
+    image_respose = openai.Image.create(prompt=dalle2_prompt(title),
                                         n=1,
                                         size='1024x1024')
 
